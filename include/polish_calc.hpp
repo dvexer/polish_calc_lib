@@ -4,6 +4,12 @@
 #include <string>
 
 namespace polish_calc {
+    /**
+     * Calculates the result of Reverse Polish notation
+     * @param input string written in Reverse Polish notation
+     * @return result of applying operations to operands
+     * @throws InvalidOperationException and InvalidOperandsException
+     */
     std::string process(const std::string &input);
 }   // polish_calc_lib
 
