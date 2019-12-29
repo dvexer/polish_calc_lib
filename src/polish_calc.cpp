@@ -1,5 +1,5 @@
 #include "include/polish_calc.hpp"
-#include "polish_calc_exceptions.hpp"
+#include "include/polish_calc_exceptions.hpp"
 #include <set>
 #include <string>
 #include <sstream>
@@ -68,7 +68,10 @@ std::string toString(const std::vector<double> & input)
 {
     std::string result;
     for (const double & item : input) {
-        result += std::to_string(item);
+        std::string str = std::to_string (item);
+        str.erase ( str.find_last_not_of('0') + 1, std::string::npos );
+        str.erase ( str.find_last_not_of('.') + 1, std::string::npos );
+        result += str;
         result += ' ';
     }
     if (!result.empty()) {
