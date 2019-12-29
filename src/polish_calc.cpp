@@ -42,12 +42,10 @@ void applyOperation(const std::string &operation, std::vector<double> &operands)
             result = first_operand * second_operand;
         } else if (operation == divide) {
             result = first_operand / second_operand;
-        } else {
-            throw InvalidOpertionException();
         }
         operands.push_back(result);
     } else {
-        throw InvalidOperandsException();
+        throw InvalidOperandsNumberException();
     }
 }
 
@@ -58,7 +56,11 @@ std::vector<double> processArguments(const std::vector<std::string> &args)
         if (isOperator(arg)) {
             applyOperation(arg, operands);
         } else {
-            operands.push_back(std::stod(arg));
+            try {
+                operands.push_back(std::stod(arg));
+            } catch (const std::invalid_argument & e) {
+                throw InvalidOperandException(arg);
+            }
         }
     }
     return operands;
@@ -83,12 +85,8 @@ std::string toString(const std::vector<double> & input)
 std::string process(const std::string &input)
 {
     const std::vector<std::string> & args = parceInput(input);
-    try {
-        const std::vector<double> intermediateResult = processArguments(args);
-        return toString(intermediateResult);
-    } catch (const std::invalid_argument & e) {
-        throw InvalidOpertionException();
-    }
+    const std::vector<double> intermediateResult = processArguments(args);
+    return toString(intermediateResult);
 }
 
 }   // polish_calc_lib

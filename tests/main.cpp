@@ -40,13 +40,13 @@ TEST(PolishCalcTest, complexTest)
 TEST(PolishCalcTest, invalidOperationTest)
 {
     std::string input{"2 2 ?"};
-    EXPECT_THROW(polish_calc::process(input), polish_calc::InvalidOpertionException);
+    EXPECT_THROW(polish_calc::process(input), polish_calc::InvalidOperandException);
 }
 
 TEST(PolishCalcTest, invalidOperandsNumberTest)
 {
     std::string input{"2 +"};
-    EXPECT_THROW(polish_calc::process(input), polish_calc::InvalidOperandsException);
+    EXPECT_THROW(polish_calc::process(input), polish_calc::InvalidOperandsNumberException);
 }
 
 // TODO: handle more cases
