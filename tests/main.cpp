@@ -29,6 +29,15 @@ TEST(PolishCalcTest, divTest)
     EXPECT_EQ("2.5", result);
 }
 
+TEST(PolishCalcTest, complexTest)
+{
+    std::string input{"15 7 1 1 + - / 3 * 2 1 1 + + -"};
+    const auto & result = polish_calc::process(input);
+    EXPECT_EQ("5", result);
+}
+//15 7 1 1 + − / 3 × 2 1 1 + + −
+
+
 int main(int argc, char **argv)
 {
   ::testing::InitGoogleTest(&argc, argv);
