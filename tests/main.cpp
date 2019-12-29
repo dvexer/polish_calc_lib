@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
 #include "include/polish_calc.hpp"
+#include "include/polish_calc_exceptions.hpp"
 
 TEST(PolishCalcTest, plusTest)
 {
@@ -35,8 +36,20 @@ TEST(PolishCalcTest, complexTest)
     const auto & result = polish_calc::process(input);
     EXPECT_EQ("5", result);
 }
-//15 7 1 1 + − / 3 × 2 1 1 + + −
 
+TEST(PolishCalcTest, invalidOperationTest)
+{
+    std::string input{"2 2 ?"};
+    EXPECT_THROW(polish_calc::process(input), polish_calc::InvalidOpertionException);
+}
+
+TEST(PolishCalcTest, invalidOperandsNumberTest)
+{
+    std::string input{"2 +"};
+    EXPECT_THROW(polish_calc::process(input), polish_calc::InvalidOperandsException);
+}
+
+// TODO: handle more cases
 
 int main(int argc, char **argv)
 {

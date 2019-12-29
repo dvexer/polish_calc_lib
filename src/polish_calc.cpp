@@ -83,8 +83,12 @@ std::string toString(const std::vector<double> & input)
 std::string process(const std::string &input)
 {
     const std::vector<std::string> & args = parceInput(input);
-    const std::vector<double> intermediateResult = processArguments(args);
-    return toString(intermediateResult);
+    try {
+        const std::vector<double> intermediateResult = processArguments(args);
+        return toString(intermediateResult);
+    } catch (const std::invalid_argument & e) {
+        throw InvalidOpertionException();
+    }
 }
 
 }   // polish_calc_lib
