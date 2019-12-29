@@ -1,24 +1,32 @@
 #include <gtest/gtest.h>
-#include <jsonutils/json_utils.h>
+#include "include/polish_calc.hpp"
 
-TEST(JsonUtilsTest, loadFromFile)
+TEST(PolishCalcTest, plusTest)
 {
-    auto doc = jsonutils::loadJson("/home/pablo/Documents/test.json");
-
-    ASSERT_TRUE(doc);
-    ASSERT_TRUE(doc->HasMember("source"));
-    auto source = (*doc)["source"].GetString();
-    ASSERT_STREQ("file", source);
+    std::string input{"5.0 2.0 +"};
+    const auto & result = polish_calc::process(input);
+    EXPECT_EQ("7", result);
 }
 
-TEST(JsonUtilsTest, loadFromUrl)
+TEST(PolishCalcTest, minusTest)
 {
-    auto doc = jsonutils::loadJson("https://books.com/novels");
+    std::string input{"5.0 2.0 -"};
+    const auto & result = polish_calc::process(input);
+    EXPECT_EQ("3", result);
+}
 
-    ASSERT_TRUE(doc);
-    ASSERT_TRUE(doc->HasMember("source"));
-    auto source = (*doc)["source"].GetString();
-    ASSERT_STREQ("url", source);
+TEST(PolishCalcTest, multTest)
+{
+    std::string input{"5.0 2.0 *"};
+    const auto & result = polish_calc::process(input);
+    EXPECT_EQ("10", result);
+}
+
+TEST(PolishCalcTest, divTest)
+{
+    std::string input{"5.0 2.0 /"};
+    const auto & result = polish_calc::process(input);
+    EXPECT_EQ("2.5", result);
 }
 
 int main(int argc, char **argv)

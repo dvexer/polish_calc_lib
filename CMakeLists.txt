@@ -8,7 +8,12 @@ set(HEADERS include/polish_calc.hpp include/polish_calc_exceptions.hpp)
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
+add_subdirectory(tests)
+
 add_library(polish_calc_lib ${SOURCES} ${HEADERS})
+
+#Add an alias so that library can be used inside the build tree, e.g. when testing
+add_library(PCL::polish_calc_lib ALIAS polish_calc_lib)
 
 target_include_directories(polish_calc_lib
         PUBLIC
