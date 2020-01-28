@@ -21,6 +21,6 @@ private:
     const std::string operand_;
 };
 
-}   // polish_calc_lib
+}   // polish_calc
 
 #endif //POLISH_CALC_POLISH_CALC_EXCEPTIONS_HPP

@@ -21,4 +21,4 @@ const char * InvalidOperandException::what () const noexcept
     return result.c_str();
 }
 
-}   // polish_calc_lib
+}   // polish_calc

@@ -11,6 +11,6 @@ namespace polish_calc {
      * @throws InvalidOperationException and InvalidOperandException
      */
     std::string process(const std::string &input);
-}   // polish_calc_lib
+}   // polish_calc
 
 #endif //POLISH_CALC_POLISH_CALC_HPP

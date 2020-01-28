@@ -1,5 +1,6 @@
 #include "include/polish_calc.hpp"
 #include "include/polish_calc_exceptions.hpp"
+#include "include/operations.hpp"
 #include <set>
 #include <string>
 #include <sstream>
@@ -7,11 +8,6 @@
 #include <vector>
 
 namespace polish_calc {
-
-static const std::string plus = "+";
-static const std::string minus = "-";
-static const std::string multiply = "*";
-static const std::string divide = "/";
 
 std::vector<std::string> parceInput(const std::string &input) {
     std::istringstream iss(input);
@@ -89,4 +85,4 @@ std::string process(const std::string &input)
     return toString(intermediateResult);
 }
 
-}   // polish_calc_lib
+}   // polish_calc
