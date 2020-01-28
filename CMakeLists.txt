@@ -15,6 +15,9 @@ add_library(polish_calc_lib ${SOURCES} ${HEADERS})
 #Add an alias so that library can be used inside the build tree, e.g. when testing
 add_library(PCL::polish_calc_lib ALIAS polish_calc_lib)
 
+set_target_properties(polish_calc_lib PROPERTIES
+        PUBLIC_HEADER include/polish_calc.hpp)
+
 target_include_directories(polish_calc_lib
         PUBLIC
             $<INSTALL_INTERFACE:include>
