@@ -2,6 +2,13 @@
 #include "include/polish_calc.hpp"
 #include "include/polish_calc_exceptions.hpp"
 
+TEST(PolishCalcTest, emptyInputTest)
+{
+    std::string input{""};
+    const auto & result = polish_calc::process(input);
+    EXPECT_EQ("", result);
+}
+
 TEST(PolishCalcTest, plusTest)
 {
     std::string input{"5.0 2.0 +"};
