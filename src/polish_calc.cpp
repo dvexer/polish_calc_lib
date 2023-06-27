@@ -7,7 +7,8 @@
 #include <iterator>
 #include <vector>
 
-namespace polish_calc {
+namespace {
+using namespace polish_calc;
 
 std::vector<std::string> parceInput(const std::string &input) {
     std::istringstream iss(input);
@@ -77,6 +78,10 @@ std::string toString(const std::vector<double> & input)
     }
     return result;
 }
+
+}   // anonymous namespace
+
+namespace polish_calc {
 
 std::string process(const std::string &input)
 {
